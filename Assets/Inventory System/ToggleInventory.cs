@@ -16,7 +16,7 @@ public class ToggleInventory : MonoBehaviour
 
     public bool isInventoryActive = false;
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         Cursor.lockState = (isInventoryActive) ? CursorLockMode.Confined : CursorLockMode.Locked;
         Cursor.visible = isInventoryActive;
@@ -29,7 +29,6 @@ public class ToggleInventory : MonoBehaviour
             isInventoryActive = !isInventoryActive;
         }
     }
-
     
     public void ToggleMovement(bool enabled)
     {

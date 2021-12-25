@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public ItemTool item;
+    public ItemEquipment equipment;
+    public ItemTool tool;
 
+    public IMyItem item;
+
+    private void Awake()
+    {
+        if(equipment == null)
+            item = tool as IMyItem;
+        else
+            item = tool as IMyItem;
+    }
     private void OnTriggerEnter(Collider other)
     {
         var i = other.GetComponentsInChildren<InventoryManager>();

@@ -1,29 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MoveInventoryItem : MonoBehaviour
 {
-    public static MoveInventoryItem move;
+    public static MoveInventoryItem mouse;
 
-    public ItemTool holding;
-    public Canvas invCanvas;
+    public IMyItem holding;
+    public DescriptionBoxSender descriptionBoxSender;
+
+    [SerializeField]
+    Canvas invCanvas;
+
     public Image holdingTexMap;
 
-    private void Awake()
+    [SerializeField]
+    GameObject slotItemDescription;
+    public SlotItemDescription itemDesc;
+
+    public void Awake()
     {
-        move = this;
+        mouse = this;
+        descriptionBoxSender = new DescriptionBoxSender();
     }
 
-    private void Update()
+    public void Update()
     {
-        if(holding != null)
-        {
-            Vector2 pos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(invCanvas.transform as RectTransform, Input.mousePosition, invCanvas.worldCamera, out pos);
-            transform.position = invCanvas.transform.TransformPoint(pos);
 
+        //set variable pos to mouse position translated from camera position, to canvas position
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(invCanvas.transform as RectTransform, Input.mousePosition, invCanvas.worldCamera, out Vector2 pos);
+        if (holding != null)
+        {
             holdingTexMap.enabled = true;
             holdingTexMap.sprite = holding.ItemSprite;
         }
@@ -32,6 +41,39 @@ public class MoveInventoryItem : MonoBehaviour
             holdingTexMap.sprite = null;
             holdingTexMap.enabled = false;
         }
+
+        if (descriptionBoxSender.sender != null || holding != null)
+        {
+            transform.position = invCanvas.transform.TransformPoint(pos);
+            slotItemDescription.SetActive(true);
+        }
+            
+        else
+            slotItemDescription.SetActive(false);
+
+    }
+}
+
+public class DescriptionBoxSender
+{
+    public IMyItem item;
+    public Slot sender;
+
+    readonly MoveInventoryItem mouse = MoveInventoryItem.mouse;
+
+    public void Set(Slot sender)
+    {
+        if (mouse.descriptionBoxSender.sender != sender)
+        {
+            this.sender = sender;
+            item = sender.holding;
+            mouse.itemDesc.UpdateDescriptionBoxTool(item);
+        }
     }
 
+    public void Clear(Slot sender)
+    {
+        if (mouse.descriptionBoxSender.sender == sender)
+            mouse.descriptionBoxSender.sender = null;
+    }
 }

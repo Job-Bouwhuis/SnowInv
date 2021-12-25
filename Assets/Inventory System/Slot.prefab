@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 0
-  holding: {fileID: 0}
   slotHoldingImage: {fileID: 8047328262292346425}
+  DescriptionBox: {fileID: 0}
 --- !u!222 &8047328263068859862
 CanvasRenderer:
   m_ObjectHideFlags: 0

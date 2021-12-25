@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour
 
     public List<GameObject> slotsList = new List<GameObject>();
 
-    private void Awake()
+    public void Awake()
     {
         foreach (Slot slot in SlotParent.GetComponentsInChildren<Slot>())
         {
@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         slots = slotsList.Count;
 
@@ -31,22 +31,30 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public bool AddItem(ItemTool item)
+    public bool AddItem(IMyItem item)
     {
-        foreach (var s in slotsList)
+        try
         {
-            var r = s.GetComponent<Slot>();
-            if (r.holding != null)
-                continue;
-            else
+            foreach (var s in slotsList)
             {
-                r.holding = item;
+                var r = s.GetComponent<Slot>();
+                if (r.holding != null)
+                    continue;
+                else
+                {
+                    r.holding = item;
 
-                return true;
+                    return true;
+                }
+
             }
-
+            return false;
         }
-        return false;
+        catch
+        {
+            Debug.Log("Inventory is full");
+            return false;
+        }
     }
 
 }

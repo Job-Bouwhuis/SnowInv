@@ -5,7 +5,7 @@ using UnityEngine;
 public class tempAddItemButton : MonoBehaviour
 {
     public InventoryManager inv;
-    public ItemTool item;
+    public ItemEquipment item;
 
     public void TEMPAddItem()
     {
