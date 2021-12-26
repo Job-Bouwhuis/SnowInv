@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
 
     public void Awake()
     {
-        foreach (Slot slot in SlotParent.GetComponentsInChildren<Slot>())
+        foreach (InventorySlot slot in SlotParent.GetComponentsInChildren<InventorySlot>())
         {
             if (!slotsList.Contains(slot.gameObject))
                 slotsList.Add(slot.gameObject);
@@ -27,22 +27,22 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < slotsList.Count; i++)
         {
             GameObject slot = slotsList[i];
-            slot.GetComponent<Slot>().Init(i);
+            slot.GetComponent<InventorySlot>().Init(i);
         }
     }
 
-    public bool AddItem(IMyItem item)
+    public bool AddItem(BaseItem item)
     {
         try
         {
             foreach (var s in slotsList)
             {
-                var r = s.GetComponent<Slot>();
+                var r = s.GetComponent<InventorySlot>();
                 if (r.holding != null)
                     continue;
                 else
                 {
-                    r.holding = item;
+                    r.holding = item as IMyItem;
 
                     return true;
                 }

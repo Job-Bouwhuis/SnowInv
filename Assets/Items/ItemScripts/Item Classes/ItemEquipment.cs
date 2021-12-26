@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Assets/Items/New Equipment")]
-public class ItemEquipment : ScriptableObject, IMyItem, IMyEquipment
+public class ItemEquipment : BaseItem, IMyItem, IMyEquipment
 {
     public string Name { get; set; }
     public string Description { get; set; }
-    public int Value { get; set; }
+    public int NuggetValue { get; set; }
     public Sprite ItemSprite { get; set; }
     public string ItemType { get; set; }
     public int ArmorValue { get; set; }

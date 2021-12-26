@@ -27,7 +27,7 @@ public class CustomEditorsTool : Editor
 
         c.Name = EditorGUILayout.TextField("Name", c.Name);
         c.Description = EditorGUILayout.TextField("Description", c.Description);
-        c.Value = EditorGUILayout.IntField("Value", c.Value);
+        c.NuggetValue = EditorGUILayout.IntField("Value", c.NuggetValue);
 
         GUILayout.Box(GUIContent.none, horizontalLine);
 
@@ -69,7 +69,7 @@ public class CustomEditorsTool : Editor
 
             c.Name = EditorGUILayout.TextField("Name", c.Name);
             c.Description = EditorGUILayout.TextField("Description", c.Description);
-            c.Value = EditorGUILayout.IntField("Value", c.Value);
+            c.NuggetValue = EditorGUILayout.IntField("Value", c.NuggetValue);
 
             GUILayout.Box(GUIContent.none, horizontalLine);
             c.ArmorType = EditorGUILayout.TextField("Armor Type", c.ArmorType);

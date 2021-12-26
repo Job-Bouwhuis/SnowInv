@@ -11,14 +11,43 @@ public class SlotItemDescription : MonoBehaviour
     public Text text4;
 
     
-    public void UpdateDescriptionBoxTool(IMyItem item)
+    public void UpdateDescriptionBox(IMyItem item)
+    {
+        var tool = item as ItemTool;
+        if (tool != null)
+        {
+            Debug.Log("Selected Tool Item");
+            Tool(tool);
+            return;
+        }
+        var equipment = item as ItemEquipment;
+        if (equipment != null)
+        {
+            Debug.Log("Selected Equipment Item");
+            Equipment(equipment);
+            return;
+        }
+        
+
+    }
+
+    public void Tool(ItemTool item)
     {
         text1.text = $"Name: {item.Name}";
-        text2.text = $"Cost: {item.Value}";
+        text2.text = $"Cost: {item.NuggetValue}";
 
-        var tool = item as ItemTool;
-        text3.text = $"Harvest Type: {tool.HarvestType}";
-        text4.text = $"Harvest Damage: {tool.HarvestDamage}";
+        text3.text = $"Harvest Type: {item.HarvestType}";
+        text4.text = $"Harvest Damage: {item.HarvestDamage}";
         
     }
+
+    public void Equipment(ItemEquipment item)
+    {
+        text1.text = $"Name: {item.Name}";
+        text2.text = $"Cost: {item.NuggetValue}";
+
+        text3.text = $"Resistance Type: {item.ArmorType}";
+        text4.text = $"Resistance: {item.ArmorValue}";
+    }
+
 }

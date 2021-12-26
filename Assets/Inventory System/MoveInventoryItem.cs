@@ -57,21 +57,21 @@ public class MoveInventoryItem : MonoBehaviour
 public class DescriptionBoxSender
 {
     public IMyItem item;
-    public Slot sender;
+    public InventorySlot sender;
 
     readonly MoveInventoryItem mouse = MoveInventoryItem.mouse;
 
-    public void Set(Slot sender)
+    public void Set(InventorySlot sender)
     {
         if (mouse.descriptionBoxSender.sender != sender)
         {
             this.sender = sender;
             item = sender.holding;
-            mouse.itemDesc.UpdateDescriptionBoxTool(item);
+            mouse.itemDesc.UpdateDescriptionBox(item);
         }
     }
 
-    public void Clear(Slot sender)
+    public void Clear(InventorySlot sender)
     {
         if (mouse.descriptionBoxSender.sender == sender)
             mouse.descriptionBoxSender.sender = null;

@@ -27,6 +27,10 @@ public class ToggleInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             isInventoryActive = !isInventoryActive;
+            if (!isInventoryActive)
+            {
+                MoveInventoryItem.mouse.descriptionBoxSender.sender = null;
+            }
         }
     }
     

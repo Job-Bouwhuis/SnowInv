@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+public class BaseItem : ScriptableObject, IDisposable
+{
+    public void Dispose()
+    {
+       
+    }
+}
+
 public interface IMyItem
 {
     public string ItemType { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public int Value { get; set; }
+    public int NuggetValue { get; set; }
     public Sprite ItemSprite { get; set; }
 }
 
@@ -32,3 +41,7 @@ public interface IMyEquipment
     public void Break();
 }
 
+public interface IMyResource
+{
+    public string MaterialType { get; set; }
+}
