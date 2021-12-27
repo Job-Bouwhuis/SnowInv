@@ -4,21 +4,8 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public ItemEquipment equipment;
-    public ItemTool tool;
-
     public BaseItem baseItem;
 
-    public IMyItem item;
-
-    private void Awake()
-    {
-        //if(equipment == null)
-        //    item = tool;
-        //else
-        //    item = equipment;
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         try

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HotbarSlot : MonoBehaviour
 {
-    public IMyItem holding;
+    public BaseItem holding;
     public Image slotHoldingImage;
     public Image selectedArrow;
     

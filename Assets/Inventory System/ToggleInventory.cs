@@ -6,12 +6,12 @@ public class ToggleInventory : MonoBehaviour
 {
     public static ToggleInventory inv;
     public GameObject inventory;
+    public GameObject hotbar;
 
     public FirstPersonMovement movement;
     public FirstPersonLook look;
     public Jump jump;
     public Crouch crouth;
-    public Zoom zoom;
 
 
     public bool isInventoryActive = false;
@@ -40,7 +40,7 @@ public class ToggleInventory : MonoBehaviour
         look.enabled = enabled;
         jump.enabled = enabled;
         crouth.enabled = enabled;
-        zoom.enabled = enabled;
+        hotbar.SetActive(enabled);
     }
 
 }

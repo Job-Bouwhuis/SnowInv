@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7147f19ffb78541429d0c7f846807ded, type: 3}
   m_Name: belt of wisdom
   m_EditorClassIdentifier: 
-  itemTexture: {fileID: 21300000, guid: 5574074505a1b594c88ecaa456d9812a, type: 3}
-  itemName: TESTITEM BELT
-  itemDescription: 
-  value: 5
+  Name: Golden Dawn pickaxe
+  Description: an ancient pickaxe forged by the best blacksmiths ever lived
+  NuggetValue: 25000
+  ItemSprite: {fileID: 21300000, guid: 4f19197b1d1255745ae288e0b3645972, type: 3}
+  MaxDurability: 3000
+  Durability: 3000
+  HarvestType: Metal, Stone
+  HarvestDamage: 9
+  SecondaryDamage: 4

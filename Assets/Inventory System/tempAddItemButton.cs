@@ -5,10 +5,14 @@ using UnityEngine;
 public class tempAddItemButton : MonoBehaviour
 {
     public InventoryManager inv;
-    public ItemTool item;
+    public BaseItem item;
 
     public void TEMPAddItem()
     {
         inv.AddItem(item);
+    }
+    public void TEMPRemoveItem()
+    {
+        inv.RemoveItem(item);
     }
 }

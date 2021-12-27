@@ -11,7 +11,7 @@ public class SlotItemDescription : MonoBehaviour
     public Text text4;
 
     
-    public void UpdateDescriptionBox(IMyItem item)
+    public void UpdateDescriptionBox(BaseItem item)
     {
         var tool = item as ItemTool;
         if (tool != null)
@@ -20,15 +20,13 @@ public class SlotItemDescription : MonoBehaviour
             Tool(tool);
             return;
         }
-        var equipment = item as ItemEquipment;
+        var equipment = item as ItemArmor;
         if (equipment != null)
         {
             Debug.Log("Selected Equipment Item");
             Equipment(equipment);
             return;
         }
-        
-
     }
 
     public void Tool(ItemTool item)
@@ -41,7 +39,7 @@ public class SlotItemDescription : MonoBehaviour
         
     }
 
-    public void Equipment(ItemEquipment item)
+    public void Equipment(ItemArmor item)
     {
         text1.text = $"Name: {item.Name}";
         text2.text = $"Cost: {item.NuggetValue}";

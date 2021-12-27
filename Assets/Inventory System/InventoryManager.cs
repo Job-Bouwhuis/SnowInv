@@ -7,15 +7,25 @@ public class InventoryManager : MonoBehaviour
     public int slots = 0;
 
     public GameObject SlotParent;
+    public GameObject HotbarSlotLinkParent;
 
-    public List<GameObject> slotsList = new List<GameObject>();
+    public List<InventorySlot> slotsList = new List<InventorySlot>();
+    public List<InventorySlot> hotbarSlots = new List<InventorySlot>();
+
+
 
     public void Awake()
     {
+        foreach (InventorySlot slot in HotbarSlotLinkParent.GetComponentsInChildren<InventorySlot>())
+        {
+            if (!hotbarSlots.Contains(slot))
+                hotbarSlots.Add(slot);
+        }
+
         foreach (InventorySlot slot in SlotParent.GetComponentsInChildren<InventorySlot>())
         {
-            if (!slotsList.Contains(slot.gameObject))
-                slotsList.Add(slot.gameObject);
+            if (!slotsList.Contains(slot))
+                slotsList.Add(slot);
         }
     }
 
@@ -26,8 +36,7 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 0; i < slotsList.Count; i++)
         {
-            GameObject slot = slotsList[i];
-            slot.GetComponent<InventorySlot>().Init(i);
+            slotsList[i].Init(i);
         }
     }
 
@@ -35,14 +44,28 @@ public class InventoryManager : MonoBehaviour
     {
         try
         {
-            foreach (var s in slotsList)
+            if (!IsHotbarFull()) 
             {
-                var r = s.GetComponent<InventorySlot>();
-                if (r.holding != null)
+                foreach(InventorySlot s in hotbarSlots)
+                {
+                    if (s.holding != null)
+                        continue;
+                    else
+                    {
+                        s.holding = item;
+                        s.UpdateSlot();
+                        return true;
+                    }
+                }
+            }
+
+            foreach (InventorySlot s in slotsList)
+            {
+                if (s.holding != null)
                     continue;
                 else
                 {
-                    r.holding = item as IMyItem;
+                    s.holding = item;
 
                     return true;
                 }
@@ -55,6 +78,41 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Inventory is full");
             return false;
         }
+    }
+
+    public bool RemoveItem(BaseItem item)
+    {
+        for(int h = 0; h < hotbarSlots.Count; h++)
+        {
+            if(hotbarSlots[h].holding == item)
+            {
+                hotbarSlots.RemoveAt(h);
+                return true;
+            }
+        }
+        Debug.Log("Item Not in Hotbar");
+        for (int i = 0; i < slotsList.Count; i++)
+        {
+            if(slotsList[i].holding == item)
+            {
+                slotsList.RemoveAt(i);
+                return true;
+            }
+        }
+        Debug.Log("Item not in inventory");
+        return false;
+    }
+
+    public bool IsHotbarFull()
+    {
+        foreach(InventorySlot s in hotbarSlots)
+        {
+            if (s.holding == null)
+                return false;
+            else
+                continue;
+        }
+        return true;
     }
 
 }

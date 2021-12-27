@@ -8,7 +8,7 @@ public class MoveInventoryItem : MonoBehaviour
 {
     public static MoveInventoryItem mouse;
 
-    public IMyItem holding;
+    public BaseItem holding;
     public DescriptionBoxSender descriptionBoxSender;
 
     [SerializeField]
@@ -28,7 +28,6 @@ public class MoveInventoryItem : MonoBehaviour
 
     public void Update()
     {
-
         //set variable pos to mouse position translated from camera position, to canvas position
         RectTransformUtility.ScreenPointToLocalPointInRectangle(invCanvas.transform as RectTransform, Input.mousePosition, invCanvas.worldCamera, out Vector2 pos);
         if (holding != null)
@@ -47,7 +46,6 @@ public class MoveInventoryItem : MonoBehaviour
             transform.position = invCanvas.transform.TransformPoint(pos);
             slotItemDescription.SetActive(true);
         }
-            
         else
             slotItemDescription.SetActive(false);
 
@@ -56,7 +54,7 @@ public class MoveInventoryItem : MonoBehaviour
 
 public class DescriptionBoxSender
 {
-    public IMyItem item;
+    public BaseItem item;
     public InventorySlot sender;
 
     readonly MoveInventoryItem mouse = MoveInventoryItem.mouse;

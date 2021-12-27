@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int slotIndex;
-    public IMyItem holding;
+    public BaseItem holding;
 
     public Image slotHoldingImage;
 
@@ -23,6 +23,11 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     }
 
     public void Update()
+    {
+        UpdateSlot();
+    }
+
+    public void UpdateSlot()
     {
         if (holding != null)
         {
@@ -44,13 +49,12 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
                 hotbarSlot.slotHoldingImage.enabled = false;
             }
         }
-
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         var mouse = MoveInventoryItem.mouse;
-        IMyItem mouseItem = mouse.holding;
+        BaseItem mouseItem = mouse.holding;
         mouse.holding = holding;
 
         if (mouseItem != null)
@@ -61,7 +65,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
         else
             holding = null;
     }
-
 
     void EnableDesc()
     {
