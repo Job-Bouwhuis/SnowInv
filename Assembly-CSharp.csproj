@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{47BEBCD9-6CA5-F90F-9A81-F9791B707D0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -62,15 +61,15 @@
     <Compile Include="Assets\Inventory System\InventorySlot.cs" />
     <Compile Include="Assets\Mini First Person Controller\Scripts\Components\FirstPersonAudio.cs" />
     <Compile Include="Assets\Mini First Person Controller\Scripts\FirstPersonLook.cs" />
+    <Compile Include="Assets\Items\ItemScripts\Item Classes\ItemArmor.cs" />
     <Compile Include="Assets\Items\ItemScripts\ItemDatabase.cs" />
     <Compile Include="Assets\Items\ItemScripts\Item Classes\ItemTool.cs" />
     <Compile Include="Assets\Items\ItemScripts\ItemPickup.cs" />
     <Compile Include="Assets\Mini First Person Controller\Scripts\Components\Jump.cs" />
     <Compile Include="Assets\Inventory System\HotbarSlot.cs" />
     <Compile Include="Assets\General\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\HotbarManager.cs" />
+    <Compile Include="Assets\Inventory System\HotbarManager.cs" />
     <Compile Include="Assets\Inventory System\tempAddItemButton.cs" />
-    <Compile Include="Assets\Items\ItemScripts\Item Classes\ItemArmor.cs" />
     <Compile Include="Assets\Mini First Person Controller\Scripts\Components\Crouch.cs" />
     <Compile Include="Assets\Inventory System\MoveInventoryItem.cs" />
     <Compile Include="Assets\Items\ItemScripts\ItemTypes.cs" />

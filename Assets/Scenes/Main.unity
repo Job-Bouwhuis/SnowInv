@@ -2474,6 +2474,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 77108200097277961, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
+      propertyPath: m_Name
+      value: Remove Item Button
+      objectReference: {fileID: 0}
     - target: {fileID: 153803305182553693, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2525,6 +2529,10 @@ PrefabInstance:
     - target: {fileID: 156669172157849384, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 156669172623562364, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
+      propertyPath: m_Name
+      value: Add item button
       objectReference: {fileID: 0}
     - target: {fileID: 156669172623562366, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2582,6 +2590,14 @@ PrefabInstance:
       propertyPath: SlotItemDescription
       value: 
       objectReference: {fileID: 50142375}
+    - target: {fileID: 1527240416803924638, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 19446d3fa1b351c43b601fb7bbb3bcbb, type: 2}
+    - target: {fileID: 2170117063483731390, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -850.22
+      objectReference: {fileID: 0}
     - target: {fileID: 2699593425884254038, guid: 21029a8c5d5c04d48bff4c6371485f34, type: 3}
       propertyPath: m_Name
       value: Player  Aestetics

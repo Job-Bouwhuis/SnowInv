@@ -10,6 +10,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject HotbarSlotLinkParent;
 
     public List<InventorySlot> slotsList = new List<InventorySlot>();
+
     public List<InventorySlot> hotbarSlots = new List<InventorySlot>();
 
 
@@ -46,25 +47,33 @@ public class InventoryManager : MonoBehaviour
         {
             if (!IsHotbarFull()) 
             {
+                //foreach hotbarslot
                 foreach(InventorySlot s in hotbarSlots)
                 {
+                    //if its not empty continue to the next slot
                     if (s.holding != null)
                         continue;
                     else
                     {
+                        //fill slot with given item
                         s.holding = item;
+                        //if inventory screen is open, this will happen automatically. but if it is closed it does not update any inventory slots.
+                        //we do this so the item appears in the hotbar when picked up
                         s.UpdateSlot();
                         return true;
                     }
                 }
             }
-
+            //executes this code if hotbar is full
+            //for every inventory slot
             foreach (InventorySlot s in slotsList)
             {
+                //if its not empty continue to the next slot
                 if (s.holding != null)
                     continue;
                 else
                 {
+                    //if it is empty fill slot with specified item
                     s.holding = item;
 
                     return true;
@@ -86,7 +95,7 @@ public class InventoryManager : MonoBehaviour
         {
             if(hotbarSlots[h].holding == item)
             {
-                hotbarSlots.RemoveAt(h);
+                hotbarSlots[h].holding = null;
                 return true;
             }
         }
@@ -95,7 +104,7 @@ public class InventoryManager : MonoBehaviour
         {
             if(slotsList[i].holding == item)
             {
-                slotsList.RemoveAt(i);
+                slotsList[i].holding = null;
                 return true;
             }
         }

@@ -48,7 +48,6 @@ public class MoveInventoryItem : MonoBehaviour
         }
         else
             slotItemDescription.SetActive(false);
-
     }
 }
 
