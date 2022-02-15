@@ -10,7 +10,7 @@ public class ItemTool : BaseItem, IMyItemUsage
     public string HarvestType;
     public int HarvestDamage;
     public int SecondaryDamage;
-
+     
     public void TakeDamage(int damage)
     {
         throw new NotImplementedException();

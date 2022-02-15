@@ -6,20 +6,21 @@ using System;
 
 public class BaseItem : ScriptableObject, IDisposable
 {
+    public int id;
     public string Name;
     public string Description;
-    public int maxStackCount;
+    public int maxStackSize = 64;
     public int stackCount;
     public int NuggetValue;
     public Sprite ItemSprite;
 
     public void Dispose()
     {
+        maxStackSize = 0;
         Name = null;
         Description = null;
         NuggetValue = 0;
         ItemSprite = null;
-        maxStackCount = 0;
         stackCount = 0;
     }
 }

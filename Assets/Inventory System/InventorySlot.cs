@@ -11,11 +11,12 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     public Image slotHoldingImage;
 
+    public Text stackText;
+    public int stackSize;
+
     [Header("HotbarLink")]
-    [SerializeField]
-    private bool isHotbarLink = false;
-    [SerializeField]
-    private HotbarSlot hotbarSlot;
+    public bool isHotbarLink = false;
+    public HotbarSlot hotbarSlot;
 
     public void Init(int slotIndex)
     {
@@ -29,6 +30,11 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     public void UpdateSlot()
     {
+        if (stackSize <= 1)
+            stackText.enabled = false;
+        else
+            stackText.enabled = true;
+
         if (holding != null)
         {
             slotHoldingImage.enabled = true;
@@ -55,15 +61,22 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     {
         var mouse = MoveInventoryItem.mouse;
         BaseItem mouseItem = mouse.holding;
+        int stackCount = mouse.StackCount;
         mouse.holding = holding;
+        mouse.StackCount = stackSize;
 
         if (mouseItem != null)
         {
             holding = mouseItem;
+            stackSize = stackCount;
             EnableDesc();
         }
         else
+        {
             holding = null;
+            stackSize = 0;
+        }
+           
     }
 
     void EnableDesc()

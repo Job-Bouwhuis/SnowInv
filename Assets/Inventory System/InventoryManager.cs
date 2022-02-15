@@ -50,9 +50,19 @@ public class InventoryManager : MonoBehaviour
                 //foreach hotbarslot
                 foreach(InventorySlot s in hotbarSlots)
                 {
-                    //if its not empty continue to the next slot
+                    //if slot is holding item
                     if (s.holding != null)
-                        continue;
+                    {
+
+                        if (s.holding.name == item.name && s.stackSize < s.holding.maxStackSize)
+                        {
+                            s.stackSize++;
+                            s.UpdateSlot();
+                            return true;
+                        }
+                        else
+                            continue;
+                    }
                     else
                     {
                         //fill slot with given item
@@ -70,7 +80,15 @@ public class InventoryManager : MonoBehaviour
             {
                 //if its not empty continue to the next slot
                 if (s.holding != null)
-                    continue;
+                {
+
+                    if (s.holding.name == item.name && s.stackSize < s.holding.maxStackSize)
+                    {
+                        s.stackSize++;
+                    }
+                    else
+                        continue;
+                }
                 else
                 {
                     //if it is empty fill slot with specified item

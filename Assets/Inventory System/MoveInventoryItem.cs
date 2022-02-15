@@ -8,6 +8,7 @@ public class MoveInventoryItem : MonoBehaviour
 {
     public static MoveInventoryItem mouse;
 
+    public int StackCount = 0;
     public BaseItem holding;
     public DescriptionBoxSender descriptionBoxSender;
 
