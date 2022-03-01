@@ -9,10 +9,10 @@ public class tempAddItemButton : MonoBehaviour
 
     public void TEMPAddItem()
     {
-        inv.AddItem(item);
+        inv.AddItem(item, 1);
     }
     public void TEMPRemoveItem()
     {
-        inv.RemoveItem(item);
+        inv.RemoveItem(item, 1);
     }
 }

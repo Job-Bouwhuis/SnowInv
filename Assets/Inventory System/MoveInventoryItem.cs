@@ -8,9 +8,10 @@ public class MoveInventoryItem : MonoBehaviour
 {
     public static MoveInventoryItem mouse;
 
-    public int StackCount = 0;
+    public int stackCount = 0;
     public BaseItem holding;
     public DescriptionBoxSender descriptionBoxSender;
+    public Text stackCountText;
 
     [SerializeField]
     Canvas invCanvas;
@@ -33,11 +34,16 @@ public class MoveInventoryItem : MonoBehaviour
         RectTransformUtility.ScreenPointToLocalPointInRectangle(invCanvas.transform as RectTransform, Input.mousePosition, invCanvas.worldCamera, out Vector2 pos);
         if (holding != null)
         {
+            if (stackCount < 1)
+                stackCountText.text = "";
+            else
+                stackCountText.text = stackCount.ToString();
             holdingTexMap.enabled = true;
             holdingTexMap.sprite = holding.ItemSprite;
         }
         else
         {
+            stackCountText.text = "";
             holdingTexMap.sprite = null;
             holdingTexMap.enabled = false;
         }

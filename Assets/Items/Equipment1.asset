@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2c1a82e50cb624182d305253b623f3, type: 3}
   m_Name: Equipment1
   m_EditorClassIdentifier: 
+  id: 3
   Name: equipment item test 1
   Description: too lazy
-  maxStackCount: 1
-  stackCount: 1
+  maxStackSize: 64
   NuggetValue: 3456
   ItemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   ArmorValue: 666

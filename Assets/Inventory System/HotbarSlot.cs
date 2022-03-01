@@ -8,5 +8,5 @@ public class HotbarSlot : MonoBehaviour
     public BaseItem holding;
     public Image slotHoldingImage;
     public Image selectedArrow;
-    
+    public Text stackText;
 }

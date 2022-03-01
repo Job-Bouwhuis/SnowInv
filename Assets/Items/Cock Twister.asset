@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7147f19ffb78541429d0c7f846807ded, type: 3}
   m_Name: Cock Twister
   m_EditorClassIdentifier: 
+  id: 2
   Name: Cock Twister
   Description: It twists your cock atleast a full rotation
+  maxStackSize: 64
   NuggetValue: 69
   ItemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   MaxDurability: 420

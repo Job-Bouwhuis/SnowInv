@@ -10,7 +10,6 @@ public class BaseItem : ScriptableObject, IDisposable
     public string Name;
     public string Description;
     public int maxStackSize = 64;
-    public int stackCount;
     public int NuggetValue;
     public Sprite ItemSprite;
 
@@ -21,16 +20,10 @@ public class BaseItem : ScriptableObject, IDisposable
         Description = null;
         NuggetValue = 0;
         ItemSprite = null;
-        stackCount = 0;
     }
 }
 
 public class IMyResource
 {
     public string MaterialType { get; set; }
-}
-
-public interface IMyItemUsage
-{
-    public void Use();
 }

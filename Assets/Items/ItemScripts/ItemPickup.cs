@@ -1,30 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class ItemPickup : MonoBehaviour
 {
     public BaseItem baseItem;
-
+    public int itemCount;
+    public bool CanPickup = false;
     private void OnTriggerEnter(Collider other)
     {
-        try
-        {
-            var i = other.GetComponentsInChildren<InventoryManager>();
-            var inv = i[0];
-            if (inv != null)
+        if (CanPickup)
+            try
             {
-                bool result = inv.AddItem(baseItem);
+                var i = other.GetComponentsInChildren<InventoryManager>();
+                var inv = i[0];
+                if (inv != null)
+                {
+                    bool result = inv.AddItem(baseItem, itemCount, true);
 
-                if (result)
-                    Destroy(this.gameObject);
-                else
-                    Debug.Log("inventory full");
+                    if (result)
+                        Destroy(gameObject);
+                    else
+                        Debug.Log("inventory full");
+                }
             }
-        }
-        catch
-        {
-
-        }
+            catch { }
     }
 }

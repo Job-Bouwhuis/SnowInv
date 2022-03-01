@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class HotbarManager : MonoBehaviour
 {
+    public InventoryManager inventoryManager;
     public List<HotbarSlot> slots = new List<HotbarSlot>();
     public HotbarSlot selected;
     int index = 0;
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         foreach (HotbarSlot slot in GetComponentsInChildren<HotbarSlot>())
              slots.Add(slot);
@@ -24,7 +25,7 @@ public class HotbarManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         float mouseInput = Input.GetAxis("Mouse ScrollWheel");
         if (mouseInput != 0)
@@ -52,7 +53,7 @@ public class HotbarManager : MonoBehaviour
             var tool = selected.holding as ItemTool;
             if (tool != null)
             {
-                tool.Use();
+                inventoryManager.ItemUseEvent.Invoke(tool.id, inventoryManager.InventorySlots[0].Player);
                 return;
             }
             var armor = selected.holding as ItemArmor;
